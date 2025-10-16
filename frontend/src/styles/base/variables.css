@@ -1,0 +1,64 @@
+
+
+/* variables.css */
+
+/* ----------------- Colors ----------------- */
+:root {
+  --color-primary: #4f46e5;        /* Main brand color */
+  --color-secondary: #facc15;      /* Accent / secondary buttons */
+  --color-accent: #ec4899;         /* Highlight / alerts */
+  --color-background: #f9fafb;     /* Page background */
+  --color-surface: #ffffff;        /* Cards, modals, panels */
+  --color-text: #111827;           /* Main text */
+  --color-text-link:#646cff;
+  --color-text-link-hover: #535bf2;
+  --color-text-muted: #6b7280;     /* Secondary / muted text */
+  --color-border: #d1d5db;         /* Borders / dividers */
+}
+
+/* ----------------- Typography ----------------- */
+:root {
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --line-height-sm: 1.2;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.75;
+}
+
+/* ----------------- Spacing ----------------- */
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --container-width: 1200px;
+}
+
+/* ----------------- Borders / Radius ----------------- */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --border-width: 1px;
+}
+
+/* ----------------- Shadows ----------------- */
+:root {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ----------------- Transitions / Animation ----------------- */
+:root {
+  --transition-fast: 0.2s ease-in-out;
+  --transition-medium: 0.4s ease-in-out;
+  --transition-slow: 0.6s ease-in-out;
+}

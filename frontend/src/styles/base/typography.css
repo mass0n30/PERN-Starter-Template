@@ -1,0 +1,58 @@
+/* Global text rules (headings, paragraphs) */
+
+@import './variables.css';
+
+/* base default font */
+body {
+  font-family: var(--font-family);
+  font-size: var(--text-base);          /* Base font size */
+  line-height: var(--line-height-md);    
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, var(--font-sans));
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: var(--line-height-sm);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-text-link-hover);
+}
+
+/* Tablet styles */
+@media (min-width: 31.25em) and (max-width: 62.5em) {
+  body {
+    font-size: var(--text-sm);
+  }
+}
+
+
+/* Mobile styles */
+@media (max-width: 31.25em) { /* ~500px */
+  body {
+    font-size: var(--text-sm);
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+}

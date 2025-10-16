@@ -3,7 +3,7 @@
 {/*maybe import local styles */}
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import styles from '../styles/form.module.css';
+import styles from '../styles/components/form.module.css';
 
 function SignUp() {
   const [user, setUser] = useState({
@@ -81,10 +81,10 @@ const handleSubmit = async (event) => {
         id="signupForm" 
         autoComplete="off"
       >
-        <div className="signupField">
+        <div className={styles.form_row}>
           <input
             id="firstname"
-            className={styles.formInput}
+            className={styles.form_input}
             name="firstname"
             autoComplete="off"
             placeholder="First Name"
@@ -93,10 +93,10 @@ const handleSubmit = async (event) => {
           />
         </div>
 
-        <div className="signupField">
+        <div className={styles.form_row}>
           <input
             id="lastname"
-            className={styles.formInput}
+            className={styles.form_input}
             name="lastname"
             autoComplete="off"
             placeholder="Last Name"
@@ -105,10 +105,10 @@ const handleSubmit = async (event) => {
           />
         </div>
 
-        <div className="signupField">
+        <div className={styles.form_row}>
           <input
             id="email"
-            className={styles.formInput}
+            className={styles.form_input}
             name="username"
             autoComplete="off"
             placeholder="Email"
@@ -117,10 +117,10 @@ const handleSubmit = async (event) => {
           />
         </div>
 
-        <div className="signupField">
+        <div className={styles.form_row}>
           <input
             id="alias"
-            className={styles.formInput}
+            className={styles.form_input}
             name="alias"
             autoComplete="off"
             placeholder="Username"
@@ -129,10 +129,10 @@ const handleSubmit = async (event) => {
           />
         </div>
 
-        <div className="signupField">
+        <div className={styles.form_row}>
           <input
             id="password"
-            className={styles.formInput}
+            className={styles.form_input}
             name="password"
             type="password"
             placeholder="Password"
@@ -140,10 +140,10 @@ const handleSubmit = async (event) => {
           />
         </div>
 
-        <div className="signupField">
+        <div className={styles.form_input}>
           <input
             id="passwordconfirm"
-            className={styles.formInput}
+            className={styles.form_input}
             name="passwordconfirm"
             type="password"
             placeholder="Repeat Password"
@@ -152,9 +152,9 @@ const handleSubmit = async (event) => {
         </div>
 
         <div className="formBtns">
-          <button type="submit" id="signupBtn">Sign Up</button>
+          <button type="submit" className={styles.form_button}>Sign Up</button>
           <Link to="/">
-            <button type="button">Login</button>
+            <button type="button"  className={styles.form_button}>Login</button>
           </Link>
         </div>
       </form>
