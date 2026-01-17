@@ -3,18 +3,33 @@ import { useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SideBar from "../components/SideBar";
+import axios from 'axios';
 
 function Home() {
 
   const [user, SetUser] = useState(null);
   const [data, SetData] = useState(null);
   // loading state settings
-  const [fetched, SetNewFetch] = useState(false);
   const [loading, SetLoading] = useState(true);
   const [success, SetSuccess] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, SetError] = useState(null);
+
+  // useful for navigation 
+  const [mount, SetMount] = useState(false);
+
+  const [toggle, SetToggle] = useState(true);
+
   const token = localStorage.getItem('usertoken');
-  console.log(token, "tested");
+  
+  // for protected routes with axios instance
+  const authRouter = axios.create({
+    baseURL: 'http://localhost:5000',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json', 
+    }
+  });
 
   //spinner upon mount with delay, post creation message with delay
   useEffect(() => {
@@ -28,6 +43,7 @@ function Home() {
     return () => clearTimeout(timer, successTimer); 
   } ,[loading, SetSuccess, SetLoading]);
 
+  // USE AXIOS FOR CLEANER FETCH BLOCKS
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -46,18 +62,18 @@ function Home() {
         SetUser(result.user); // (only non sensitive user data from backend)
         // SetData(result.posts);
         // reset boolean fetch after updated posts fetch
-        SetNewFetch(false);
       } catch (error) {
-        setError(error);
+        SetError(error);
       } 
     };
     fetchUser();
-  }, [token, fetched]);  // token dependency?
+  }, [token, mount]);  // token dependency?
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
   
+  // skeleton loader Navbar/sidebar, ect. 
   if (loading  || !user) {
     return (
       <>
@@ -73,7 +89,10 @@ function Home() {
   return (
     <>
     <Navbar/>
-      <Outlet context={{user, data, loading, success, SetLoading, SetSuccess, SetNewFetch, }} />
+    <aside>
+      <SideBar/>
+    </aside>
+      <Outlet context={{user, data, loading, success, SetLoading, SetSuccess, SetMount, mount }} />
     <Footer/>
     </>
 
