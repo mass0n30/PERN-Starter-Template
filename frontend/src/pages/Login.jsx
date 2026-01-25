@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { CircleUserRound } from "lucide-react";
 import styles from '../styles/components/form.module.css';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -16,7 +17,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await fetch('http://localhost:5000/', {
+    await fetch(`${import.meta.env.VITE_API_URL}/`, {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -51,17 +52,50 @@ function Login() {
     })
   };
 
+    const handleGuestSubmit = async () => {
+    await fetch(`${import.meta.env.VITE_API_URL}/home/guest`, {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(async (response) => {
+
+      const data = await response.json();
+    
+      if (data.error) {
+        setError(data.error);
+        return;
+      }
+
+      if (!data.error) {
+        navigate("/home");
+      }
+    })
+  };
+
+
   return (
     <>
     {error ? (
       <p>A network error was encountered: {error}</p>
     ) : null}
 
-      <div className={styles.formContainer}  >
+      <div className={styles.formContainerOuter} >
+        <div className={styles.formContainer}>
+        <div className={styles.logoContainer}>
+          <div className={styles.logoImage}>
+          </div>
+          <div className={styles.logoText}></div>
+        </div>
+        {error ? (
+          <span style={{ color: 'red' }}>Error was encountered: {error}</span>
+        ) : null}
         <form 
           onSubmit={handleSubmit} 
           method="POST" 
-          id="loginFormInput" 
+          className={styles.login_form} 
           autoComplete="off"
         >
           <div className={styles.form_row}>
@@ -86,18 +120,27 @@ function Login() {
             type ="password" 
             />
           </div>
-          <div className="formBtns">
-            <button type="submit" className={styles.form_button}>Log In</button>
+          <div className={styles.form_row}>
+            <button type="submit" className={styles.form_button}>Continue</button>
           </div>
         </form>
-          <div className="formBtns" id="signUp">
+          <div className={styles.form_row_signup}>
             <div className={styles.form_link} >
-              Not a member? 
+             <> Not a member? </> 
             </div>
             <Link to="/sign-up">
-              <button className={styles.form_button}>Sign Up!</button>
+              <button className={styles.form_button_signup}>Sign Up!</button>
             </Link>
           </div>
+          <div className={styles.form_row_signup }>
+            <button className={styles.guest_btn} onClick={handleGuestSubmit}>
+              <div className={styles.guest_container}>
+                  <div>Continue as Guest</div>
+                  <CircleUserRound/>
+              </div>
+           </button>
+          </div>
+        </div>
       </div>
     </>
   )

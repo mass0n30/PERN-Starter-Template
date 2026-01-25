@@ -52,8 +52,6 @@ const handleSubmit = async (event) => {
     setError(["Network or server error"]);
   }
 };
-
-
   //handler function for user info
   const updateInfo = (value, propType) => {
 
@@ -73,93 +71,99 @@ const handleSubmit = async (event) => {
       </ul>
     ) : null}
         
-        
-    <div  className={styles.formContainer}>
-      <form 
-        onSubmit={handleSubmit} 
-        method="POST" 
-        id="signupForm" 
-        autoComplete="off"
-      >
-        <div className={styles.form_row}>
-          <input
-            id="firstname"
-            className={styles.form_input}
-            name="firstname"
-            autoComplete="off"
-            placeholder="First Name"
-            type="text"
-            onChange={(event) => updateInfo(event.target.value, "fname")}
-          />
+    <div  className={styles.formContainerOuter}>
+      <div className={styles.formContainer}>
+        <div className={styles.logoContainer}>
+          <div className={styles.logoImage}>
+          </div>
+          <div className={styles.logoText}></div>
         </div>
+        <form 
+          onSubmit={handleSubmit} 
+          method="POST" 
+          id="signupForm" 
+          autoComplete="off"
+        >
+          <div className={styles.form_row}>
+            <input
+              id="firstname"
+              className={styles.form_input}
+              name="firstname"
+              autoComplete="off"
+              placeholder="First Name"
+              type="text"
+              onChange={(event) => updateInfo(event.target.value, "fname")}
+            />
+          </div>
 
-        <div className={styles.form_row}>
-          <input
-            id="lastname"
-            className={styles.form_input}
-            name="lastname"
-            autoComplete="off"
-            placeholder="Last Name"
-            type="text"
-            onChange={(event) => updateInfo(event.target.value, "lname")}
-          />
-        </div>
+          <div className={styles.form_row}>
+            <input
+              id="lastname"
+              className={styles.form_input}
+              name="lastname"
+              autoComplete="off"
+              placeholder="Last Name"
+              type="text"
+              onChange={(event) => updateInfo(event.target.value, "lname")}
+            />
+          </div>
 
-        <div className={styles.form_row}>
-          <input
-            id="email"
-            className={styles.form_input}
-            name="username"
-            autoComplete="off"
-            placeholder="Email"
-            type="email"
-            onChange={(event) => updateInfo(event.target.value, "email")}
-          />
-        </div>
+          <div className={styles.form_row}>
+            <input
+              id="email"
+              className={styles.form_input}
+              name="username"
+              autoComplete="off"
+              placeholder="Email"
+              type="email"
+              onChange={(event) => updateInfo(event.target.value, "email")}
+            />
+          </div>
 
-        <div className={styles.form_row}>
-          <input
-            id="alias"
-            className={styles.form_input}
-            name="alias"
-            autoComplete="off"
-            placeholder="Username"
-            type="text"
-            onChange={(event) => updateInfo(event.target.value, "alias")}
-          />
-        </div>
+          <div className={styles.form_row}>
+            <input
+              id="alias"
+              className={styles.form_input}
+              name="alias"
+              autoComplete="off"
+              placeholder="Username"
+              type="text"
+              onChange={(event) => updateInfo(event.target.value, "alias")}
+            />
+          </div>
 
-        <div className={styles.form_row}>
-          <input
-            id="password"
-            className={styles.form_input}
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={(event) => updateInfo(event.target.value, "password")}
-          />
-        </div>
+          <div className={styles.form_row}>
+            <input
+              id="password"
+              className={styles.form_input}
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={(event) => updateInfo(event.target.value, "password")}
+            />
+          </div>
 
-        <div className={styles.form_input}>
-          <input
-            id="passwordconfirm"
-            className={styles.form_input}
-            name="passwordconfirm"
-            type="password"
-            placeholder="Repeat Password"
-            onChange={(event) => updateInfo(event.target.value, "passwordconfirm")}
-          />
-        </div>
+          <div className={styles.form_row}>
+            <input
+              id="passwordconfirm"
+              className={styles.form_input}
+              name="passwordconfirm"
+              type="password"
+              placeholder="Repeat Password"
+              onChange={(event) => updateInfo(event.target.value, "passwordconfirm")}
+            />
+          </div>
 
-        <div className="formBtns">
-          <button type="submit" className={styles.form_button}>Sign Up</button>
-          <Link to="/">
-            <button type="button"  className={styles.form_button}>Login</button>
-          </Link>
-        </div>
-      </form>
+          <div className={styles.form_btns}>
+            <button type="submit" id="signupBtn">Sign Up</button>
+            <Link to="/">
+              <button type="button">Login</button>
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
-    </>
+   </>
   )
 }
 

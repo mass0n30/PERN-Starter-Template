@@ -9,7 +9,7 @@ function HomePage() {
 
   return (
     <>
-      <div>Welcome home, <i>{user.alias}</i> </div>
+      <div>Welcome home, <i>{user ? user.alias : "Guest"}</i> </div>
     </>
   )
 }

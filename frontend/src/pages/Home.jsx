@@ -1,5 +1,5 @@
 {/* import { useState, useEffect } from 'react' */}
-import { useParams, Outlet } from "react-router-dom";
+import { useParams, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,6 +9,7 @@ import axios from 'axios';
 function Home() {
 
   const [user, SetUser] = useState(null);
+  const [guestMode, SetGuestMode] = useState(false);
   const [data, SetData] = useState(null);
   // loading state settings
   const [loading, SetLoading] = useState(true);
@@ -21,6 +22,7 @@ function Home() {
   const [toggle, SetToggle] = useState(true);
 
   const token = localStorage.getItem('usertoken');
+  const navigate = useNavigate();
   
   // for protected routes with axios instance
   const authRouter = axios.create({
@@ -66,7 +68,40 @@ function Home() {
         SetError(error);
       } 
     };
-    fetchUser();
+
+    const fetchGuestMode = async () => {
+      try {
+                                        //using env variable for base URL ???                                          
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/home/guest`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json', 
+          },
+        });
+        if (!response.ok) {
+          navigate('/');
+
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        SetGuestMode(true);
+        // SetData(result.data);
+
+        // reset boolean fetch after updated posts fetch
+      } catch (error) {
+        SetError(error);
+      } 
+    };
+
+    // initiate GET home fetch if there's a token else continue guest mode
+     if (token) {
+      fetchUser();
+     } else {
+      fetchGuestMode();
+     }
+
   }, [token, mount]);  // token dependency?
 
   if (error) {
@@ -74,7 +109,7 @@ function Home() {
   }
   
   // skeleton loader Navbar/sidebar, ect. 
-  if (loading  || !user) {
+  if (loading) {
     return (
       <>
       <Navbar/>
