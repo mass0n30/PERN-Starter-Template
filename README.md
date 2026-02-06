@@ -55,3 +55,72 @@ Linting commands
 Prettier commands
 - npm install --save-dev prettier
 - touch .prettierrc  (Optional config file for tab space, ect. )
+
+
+This template encourages using small layout primitives to manage spacing and responsiveness instead of hard-coded margins or excessive media queries.
+
+Using Primitive Component Examples:
+
+```jsx
+
+<Shell>
+  <Stack>
+    <h1>Page Title</h1>
+
+    <Cluster>
+      <Button />
+      <Button />
+      <Button />
+    </Cluster>
+
+    <Content />
+  </Stack>
+</Shell>
+
+another example
+<Shell>
+  <Stack>
+    <Header />
+    <Cluster>
+      <FilterTag />
+      <FilterTag />
+      <FilterTag />
+    </Cluster>
+    <Content />
+  </Stack>
+</Shell>
+
+detailed example (*Section and Main content being semantic tags*)
+
+<Shell>
+  <Stack>
+    <PageHeader>
+      <h1>Dashboard</h1>
+      <p>Overview of your recent activity</p>
+    </PageHeader>
+
+    <MainContent>
+      <Stack>
+        <Section>
+          <h2>Quick Stats</h2>
+          <Grid>
+            <StatCard />
+            <StatCard />
+            <StatCard />
+          </Grid>
+        </Section>
+
+        <Section>
+          <h2>Recent Items</h2>
+          <Stack>
+            <ItemRow />
+            <ItemRow />
+            <ItemRow />
+          </Stack>
+        </Section>
+      </Stack>
+    </MainContent>
+
+    <Footer />
+  </Stack>
+</Shell>

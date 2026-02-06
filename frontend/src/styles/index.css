@@ -30,7 +30,28 @@
   text-align: center;
 }
 
-/* 💻 Default (Desktop-first) */
+/* Shell defines boundaries, Stack defines rhythm, Cluster defines horizontal relationships. */
+
+.shell {
+  max-width: var(--max-page);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md); /* change upon media queries */
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm); /* change upon media queries */
+  align-items: center;
+}
+
+
 body {
   margin: 0;
   display: flex;
@@ -45,7 +66,6 @@ body {
   }
 }
 
-/* 📱 Mobile: below 500px */
 @media (max-width: 31.25em) {
   body {
     /* Mobile styles */

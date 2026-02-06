@@ -1,64 +1,80 @@
-
-
 /* variables.css */
 
 /* ----------------- Colors ----------------- */
 :root {
-  --color-primary: #4f46e5;        /* Main brand color */
-  --color-secondary: #facc15;      /* Accent / secondary buttons */
-  --color-accent: #ec4899;         /* Highlight / alerts */
-  --color-background: #f9fafb;     /* Page background */
-  --color-surface: #ffffff;        /* Cards, modals, panels */
-  --color-text: #111827;           /* Main text */
-  --color-text-link:#646cff;
-  --color-text-link-hover: #535bf2;
-  --color-text-muted: #6b7280;     /* Secondary / muted text */
-  --color-border: #d1d5db;         /* Borders / dividers */
-}
+  --color-primary: #4f46e5;
+  --color-secondary: #facc15;
+  --color-accent: #ec4899;
 
-/* ----------------- Typography ----------------- */
-:root {
+  --color-background: #f9fafb;
+  --color-surface: #ffffff;
+
+  --color-text: #111827;
+  --color-text-link: #646cff;
+  --color-text-link-hover: #535bf2;
+  --color-text-muted: #6b7280;
+  --color-border: #d1d5db;
+
+  /* ----------------- Typography ----------------- */
   --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
+
+  /* fluid type: scales slightly with viewport */
+  --text-xs: clamp(0.75rem, 0.2vw + 0.7rem, 0.8rem);
+  --text-sm: clamp(0.875rem, 0.25vw + 0.82rem, 0.95rem);
+  --text-base: clamp(1rem, 0.35vw + 0.95rem, 1.0625rem);
+  --text-lg: clamp(1.125rem, 0.55vw + 1.02rem, 1.25rem);
+  --text-xl: clamp(1.25rem, 0.85vw + 1.08rem, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2vw + 1.2rem, 1.875rem);
+  --text-3xl: clamp(1.875rem, 1.8vw + 1.35rem, 2.25rem);
+
   --line-height-sm: 1.2;
   --line-height-md: 1.5;
   --line-height-lg: 1.75;
-}
 
-/* ----------------- Spacing ----------------- */
-:root {
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --container-width: 1200px;
-}
+  --font-heading: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-/* ----------------- Borders / Radius ----------------- */
-:root {
+  --text-body: clamp(1rem, 0.35vw + 0.95rem, 1.0625rem);
+
+  --h1: clamp(1.9rem, 2.2vw + 1.2rem, 2.6rem);
+  --h2: clamp(1.6rem, 1.6vw + 1.1rem, 2.1rem);
+  --h3: clamp(1.35rem, 1.2vw + 1.05rem, 1.75rem);
+  --h4: clamp(1.2rem, 0.9vw + 1.0rem, 1.5rem);
+  --h5: clamp(1.1rem, 0.6vw + 1.0rem, 1.25rem);
+  --h6: clamp(1rem, 0.4vw + 0.95rem, 1.1rem);
+
+
+  /* ----------------- Spacing ----------------- */
+  /* fluid spacing: tight on mobile, roomier on desktop */
+  /* USING CLAMP FOR FLUID SPACING INSTEAD OF MEDIA QUERIES FOR MOST THINGS */
+  /* clamp(MIN, PREFERRED, MAX) */
+
+  --space-xs: clamp(0.25rem, 0.4vw, 0.375rem);  /* ~4–6px */
+  --space-sm: clamp(0.5rem, 0.8vw, 0.75rem);    /* ~8–12px */
+  --space-md: clamp(0.75rem, 1.2vw, 1rem);      /* ~12–16px */
+  --space-lg: clamp(1rem, 1.6vw, 1.5rem);       /* ~16–24px */
+  --space-xl: clamp(1.5rem, 2.4vw, 2rem);       /* ~24–32px */
+
+  /* layout widths */
+  --container-max: 1200px;
+  --content-max: 900px;
+
+  /* standard padding used by Shell */
+  --page-padding: var(--space-md);
+
+  /* ----------------- Borders / Radius ----------------- */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --border-width: 1px;
-}
 
-/* ----------------- Shadows ----------------- */
-:root {
+  /* ----------------- Shadows ----------------- */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
-}
 
-/* ----------------- Transitions / Animation ----------------- */
-:root {
+  /* ----------------- Transitions / Animation ----------------- */
   --transition-fast: 0.2s ease-in-out;
   --transition-medium: 0.4s ease-in-out;
   --transition-slow: 0.6s ease-in-out;
+
 }

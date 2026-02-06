@@ -1,34 +1,45 @@
+/* typography.css */
 /* Global text rules (headings, paragraphs) */
 
 @import './variables.css';
 
-/* base default font */
+/* base document text */
 body {
   font-family: var(--font-family);
-  font-size: var(--text-base);          /* Base font size */
-  line-height: var(--line-height-md);    
+  font-size: var(--text-body);
+  line-height: var(--line-height-md);
   color: var(--color-text);
+  margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading, var(--font-sans));
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading, var(--font-family));
   font-weight: 600;
   color: var(--color-text);
   line-height: var(--line-height-sm);
+  margin: 0;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); }
+h3 { font-size: var(--h3); }
+h4 { font-size: var(--h4); }
+h5 { font-size: var(--h5); }
+h6 { font-size: var(--h6); }
 
+/* paragraphs */
 p {
   margin: 0 0 1rem 0;
-  font-size: 1rem;
+  font-size: var(--text-body);
 }
 
+/* links */
 a {
   color: var(--color-text-link);
   text-decoration: none;
@@ -37,22 +48,4 @@ a {
 a:hover {
   text-decoration: underline;
   color: var(--color-text-link-hover);
-}
-
-/* Tablet styles */
-@media (min-width: 31.25em) and (max-width: 62.5em) {
-  body {
-    font-size: var(--text-sm);
-  }
-}
-
-
-/* Mobile styles */
-@media (max-width: 31.25em) { /* ~500px */
-  body {
-    font-size: var(--text-sm);
-  }
-
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
 }
